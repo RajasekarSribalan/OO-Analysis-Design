@@ -35,6 +35,10 @@ public class FindGuitarTest {
 		}
 	}
 
+	/**
+	 * Method initializeInventory
+	 * @param inventory
+	 */
 	private static void initializeInventory(Inventory inventory) {
 		// TODO Auto-generated method stub
 		inventory.addGuitar("V12878", Builder.FLYN, "Jumbo", Type.ELECTRIC, Wood.BRAZIL_WOOD, Wood.BRAZIL_WOOD, 876);
