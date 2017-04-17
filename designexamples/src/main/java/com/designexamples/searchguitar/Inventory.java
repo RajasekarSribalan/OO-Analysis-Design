@@ -1,7 +1,12 @@
 package com.designexamples.searchguitar;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.designexamples.searchguitar.enums.Builder;
+import com.designexamples.searchguitar.enums.Type;
+import com.designexamples.searchguitar.enums.Wood;
 
 /**
  * 
@@ -34,9 +39,9 @@ public class Inventory {
 	 * @param backWood
 	 * @param topWood
 	 */
-	public void addGuitar(String serialNumber, String builder, String model, String type, String backWood, String topWood) {
+	public void addGuitar(String serialNumber, Builder builder, String model, Type type, Wood backWood, Wood topWood, double price) {
 
-		Guitar guitar = new Guitar(serialNumber, builder, model, type, backWood, topWood);
+		Guitar guitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price);
 		guitars.add(guitar);
 	}
 
@@ -61,31 +66,27 @@ public class Inventory {
 	 * @param searchGuitar
 	 * @return
 	 */
-	public Guitar search(Guitar searchGuitar) {
+	public List<Guitar> search(Guitar searchGuitar) {
+		List<Guitar> matchingGuitars = new ArrayList<Guitar>();
 		for (Guitar guitar : guitars) {
-			String builder = searchGuitar.getBuilder();
-			if (null != builder && !"".equalsIgnoreCase(builder) && !builder.equalsIgnoreCase(guitar.getBuilder())) {
+			if (searchGuitar.getBuilder() != guitar.getBuilder()) {
 				continue;
 			}
-			String model = searchGuitar.getModel();
-			if (null != model && !"".equalsIgnoreCase(model) && !model.equalsIgnoreCase(guitar.getModel())) {
+			String model = searchGuitar.getModel().toLowerCase();
+			if (null != model && !"".equalsIgnoreCase(model) && !model.equalsIgnoreCase(guitar.getModel().toLowerCase())) {
 				continue;
 			}
-			String type = searchGuitar.getType();
-			if (null != type && !"".equalsIgnoreCase(type) && !type.equalsIgnoreCase(guitar.getType())) {
+			if (searchGuitar.getType() != guitar.getType()) {
 				continue;
 			}
-			String backwood = searchGuitar.getBackWood();
-			if (null != backwood && !"".equalsIgnoreCase(backwood) && !backwood.equalsIgnoreCase(guitar.getBackWood())) {
+			if (searchGuitar.getBackWood() != guitar.getBackWood()) {
 				continue;
 			}
-			String topwood = searchGuitar.getTopWood();
-			if (null != topwood && !"".equalsIgnoreCase(topwood) && !topwood.equalsIgnoreCase(guitar.getTopWood())) {
+			if (searchGuitar.getTopWood() != guitar.getTopWood()) {
 				continue;
 			}
-			return guitar;
-
+			matchingGuitars.add(guitar);
 		}
-		return null;
+		return matchingGuitars;
 	}
 }
