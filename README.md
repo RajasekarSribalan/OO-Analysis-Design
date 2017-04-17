@@ -11,3 +11,4 @@ Package : designexamples/src/main/java/com/designexamples/searchguitar/
 
 What will we learn fromt this design?
   1.Use Enums instead of using String comparisons.
+  2.Enums for Type safety and value safety
