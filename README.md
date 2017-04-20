@@ -9,6 +9,7 @@ Simple guitar search app
 
 Package : designexamples/src/main/java/com/designexamples/searchguitar/
 
-What will we learn fromt this design?
+What will we learn from this design?
   1.Use Enums instead of using String comparisons.
   2.Enums for Type safety and value safety
+  3.Use Encapsulation to group your application into logical parts (refer GuitarSpec class and its behaviour)
