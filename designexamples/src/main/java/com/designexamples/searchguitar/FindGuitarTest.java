@@ -2,9 +2,10 @@ package com.designexamples.searchguitar;
 
 import java.util.List;
 
-import com.designexamples.searchguitar.enums.Builder;
-import com.designexamples.searchguitar.enums.Type;
-import com.designexamples.searchguitar.enums.Wood;
+import com.designexamples.searchguitar.pojos.Builder;
+import com.designexamples.searchguitar.pojos.GuitarSpec;
+import com.designexamples.searchguitar.pojos.Type;
+import com.designexamples.searchguitar.pojos.Wood;
 
 public class FindGuitarTest {
 
@@ -20,13 +21,14 @@ public class FindGuitarTest {
 		Inventory inventory = new Inventory();
 		initializeInventory(inventory);
 
-		Guitar WhatUserWants = new Guitar("", Builder.FLYN, "", Type.ELECTRIC, Wood.BRAZIL_WOOD, Wood.BRAZIL_WOOD, 0);
+		GuitarSpec WhatUserWants = new GuitarSpec("", Builder.FLYN, Type.ELECTRIC, Wood.BRAZIL_WOOD, Wood.BRAZIL_WOOD);
 		List<Guitar> outputGuitar = inventory.search(WhatUserWants);
 		if (null != outputGuitar) {
 			System.out.println("Hey User,you might like these Guitars!!!");
 			for (Guitar guitar : outputGuitar) {
-				System.out.println("We have " + " " + guitar.getBuilder() + " \n" + guitar.getModel() + " \n" + guitar.getPrice() + " \n"
-						+ guitar.getType() + " \n" + guitar.getTopWood() + " \n" + guitar.getBackWood());
+				GuitarSpec guitarSpec = guitar.getGuitarSpec();
+				System.out.println("We have " + " " + guitarSpec.getBuilder() + " \n" + guitarSpec.getModel() + " \n" + guitar.getPrice() + " \n"
+						+ guitarSpec.getType() + " \n" + guitarSpec.getTopWood() + " \n" + guitarSpec.getBackWood());
 				System.out.println("=================================");
 			}
 
@@ -37,6 +39,7 @@ public class FindGuitarTest {
 
 	/**
 	 * Method initializeInventory
+	 * 
 	 * @param inventory
 	 */
 	private static void initializeInventory(Inventory inventory) {

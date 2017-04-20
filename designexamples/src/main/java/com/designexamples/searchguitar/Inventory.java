@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.designexamples.searchguitar.enums.Builder;
-import com.designexamples.searchguitar.enums.Type;
-import com.designexamples.searchguitar.enums.Wood;
+import com.designexamples.searchguitar.pojos.Builder;
+import com.designexamples.searchguitar.pojos.GuitarSpec;
+import com.designexamples.searchguitar.pojos.Type;
+import com.designexamples.searchguitar.pojos.Wood;
 
 /**
  * 
@@ -41,7 +42,8 @@ public class Inventory {
 	 */
 	public void addGuitar(String serialNumber, Builder builder, String model, Type type, Wood backWood, Wood topWood, double price) {
 
-		Guitar guitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price);
+		GuitarSpec guitarSpec = new GuitarSpec(model, builder, type, backWood, topWood);
+		Guitar guitar = new Guitar(serialNumber, price, guitarSpec);
 		guitars.add(guitar);
 	}
 
@@ -66,23 +68,24 @@ public class Inventory {
 	 * @param searchGuitar
 	 * @return
 	 */
-	public List<Guitar> search(Guitar searchGuitar) {
+	public List<Guitar> search(GuitarSpec guitarSpec) {
 		List<Guitar> matchingGuitars = new ArrayList<Guitar>();
 		for (Guitar guitar : guitars) {
-			if (searchGuitar.getBuilder() != guitar.getBuilder()) {
+			GuitarSpec guitarObj = guitar.getGuitarSpec();
+			if (guitarSpec.getBuilder() != guitarObj.getBuilder()) {
 				continue;
 			}
-			String model = searchGuitar.getModel().toLowerCase();
-			if (null != model && !"".equalsIgnoreCase(model) && !model.equalsIgnoreCase(guitar.getModel().toLowerCase())) {
+			String model = guitarSpec.getModel().toLowerCase();
+			if (null != model && !"".equalsIgnoreCase(model) && !model.equalsIgnoreCase(guitarObj.getModel().toLowerCase())) {
 				continue;
 			}
-			if (searchGuitar.getType() != guitar.getType()) {
+			if (guitarSpec.getType() != guitarObj.getType()) {
 				continue;
 			}
-			if (searchGuitar.getBackWood() != guitar.getBackWood()) {
+			if (guitarSpec.getBackWood() != guitarObj.getBackWood()) {
 				continue;
 			}
-			if (searchGuitar.getTopWood() != guitar.getTopWood()) {
+			if (guitarSpec.getTopWood() != guitarObj.getTopWood()) {
 				continue;
 			}
 			matchingGuitars.add(guitar);
