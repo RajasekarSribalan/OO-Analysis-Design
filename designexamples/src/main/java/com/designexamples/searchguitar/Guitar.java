@@ -18,7 +18,7 @@ public class Guitar {
 
 		this.serialNumber = serialNumber;
 		this.price = price;
-		this.setGuitarSpec(guitarSpec);
+		this.guitarSpec = guitarSpec;
 	}
 
 	public String getSerialNumber() {
