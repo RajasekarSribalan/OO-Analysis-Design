@@ -1,4 +1,4 @@
-package udemy.oopsDesign;
+package udemy.oopsDesign.basics;
 
 /**
  * class Human
@@ -9,24 +9,24 @@ public class Human {
 	String name;
 	int age;
 	int heightInInches;
-	int eyeColor;
+	String eyeColor;
 
 	public Human() {
 
 	}
 
-	private void speak() {
+	public void speak() {
 		System.out.println("Hello there, my name is " + name);
 		System.out.println("I am " + age + " years old");
 		System.out.println("I am " + heightInInches + " inches in height");
 		System.out.println("My eye color is " + eyeColor);
 	}
 
-	private void eat() {
+	public void eat() {
 		System.out.println("eating ...");
 	}
 
-	private void walk() {
+	public void walk() {
 		System.out.println("walking ...");
 	}
 
