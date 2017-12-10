@@ -11,8 +11,10 @@ public class Zoo {
 		animal1.eat();
 		animal1.walk();
 
-		Bird bird1 = new Bird();
+		Bird bird1 = new Bird("Dove",11,17);
+		bird1.eat();
 		bird1.fly();
+		bird1.walk();
 
 	}
 }
