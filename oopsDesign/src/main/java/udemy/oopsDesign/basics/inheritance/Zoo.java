@@ -1,4 +1,4 @@
-package udemy.oopsDesign.basics2;
+package udemy.oopsDesign.basics.inheritance;
 
 public class Zoo {
 

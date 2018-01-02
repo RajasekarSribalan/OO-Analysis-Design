@@ -1,4 +1,4 @@
-package udemy.oopsDesign.basics2;
+package udemy.oopsDesign.basics.interfaces;
 
 public class Fish extends Animal{
 	public Fish(String name, int height, int weightinLbs) {
